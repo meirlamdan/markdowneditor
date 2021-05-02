@@ -1,12 +1,19 @@
 <template>
   <div id="App">
     <div id="headingDiv">
-      <button id="bold" @click="handleHeading(1)">h1</button>
-      <button id="bold" @click="handleHeading(2)">h2</button>
-      <button id="bold" @click="handleHeading(3)">h3</button>
-      <button id="bold" @click="handleHeading(4)">h4</button>
-      <button id="bold" @click="handleHeading(5)">h5</button>
-      <button id="bold" @click="handleHeading(6)">h6</button>
+      <button class="heading" @click="handleHeading(1)">h1</button>
+      <button class="heading" @click="handleHeading(2)">h2</button>
+      <button class="heading" @click="handleHeading(3)">h3</button>
+      <button class="heading" @click="handleHeading(4)">h4</button>
+      <button class="heading" @click="handleHeading(5)">h5</button>
+      <button class="heading" @click="handleHeading(6)">h6</button>
+      <button class="addIn" @click="handleAddIn('- ')">Bullets</button>
+      <button class="addIn" @click="handleAddIn('1. ')">Ordered List</button>
+      <button class="addIn" @click="handleAddIn('- [ ] ')">Checkbox</button>
+      <button class="addIn" @click="handleAddIn('> ')">Quotes</button>
+      <button class="addIn" @click="handleAddIn('``` ')">Code</button>
+      <button class="addIn" @click="handleAddIn('![]()')">Image</button>
+      <button class="addIn" @click="handleAddIn('[]()')">Link</button>
     </div>
     <div id="editorDiv">
       <div id="editorWindow">
@@ -40,8 +47,10 @@ export default {
   },
   methods: {
     handleHeading(size) {
-      console.log("#" * size);
       this.inputText = this.inputText + "#".repeat(size) + " ";
+    },
+    handleAddIn(type) {
+      this.inputText = this.inputText + type;
     },
   },
 };
@@ -80,6 +89,13 @@ export default {
       resize: none;
       font-size: 1.25rem;
       border-radius: 2%;
+    }
+  }
+
+  #headingDiv {
+    button {
+      background-color: #f5f5f5;
+      border: 0.0125rem solid;
     }
   }
 }
