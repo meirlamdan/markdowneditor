@@ -1,11 +1,20 @@
 <template>
   <div id="App">
-    <button id="bold" @click="handleBold">Bold</button>
-    <div id="editorWindow">
-      <textarea id="editor" v-model="inputText"></textarea>
+    <div id="headingDiv">
+      <button id="bold" @click="handleHeading(1)">h1</button>
+      <button id="bold" @click="handleHeading(2)">h2</button>
+      <button id="bold" @click="handleHeading(3)">h3</button>
+      <button id="bold" @click="handleHeading(4)">h4</button>
+      <button id="bold" @click="handleHeading(5)">h5</button>
+      <button id="bold" @click="handleHeading(6)">h6</button>
     </div>
-    <div id="displayWindow">
-      <div id="display" v-html="stylizedMarkdown"></div>
+    <div id="editorDiv">
+      <div id="editorWindow">
+        <textarea id="editor" v-model="inputText"></textarea>
+      </div>
+      <div id="displayWindow">
+        <div id="display" v-html="stylizedMarkdown"></div>
+      </div>
     </div>
   </div>
 </template>
@@ -30,8 +39,9 @@ export default {
     },
   },
   methods: {
-    handleBold() {
-      this.inputText = this.inputText + "** ";
+    handleHeading(size) {
+      console.log("#" * size);
+      this.inputText = this.inputText + "#".repeat(size) + " ";
     },
   },
 };
@@ -44,7 +54,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
 
-  #App {
+  #editorDiv {
     display: flex;
   }
 
